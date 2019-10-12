@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -48,23 +50,18 @@
                   <Text layoutX="9.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur des cheveux :" />
                   <Text layoutX="118.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visuel de l'Avatar" />
                   <ColorPicker fx:id="eyes_color" layoutX="139.0" layoutY="59.0" />
-                  <ColorPicker fx:id="hair_color" layoutX="139.0" layoutY="118.0" />
                   <ColorPicker fx:id="Origine" layoutX="139.0" layoutY="31.0" />
-                  <MenuButton fx:id="coupe_cheveux" layoutX="139.0" layoutY="88.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="MenuButton">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-                  <Text layoutX="9.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Longueur des cheveux :" />
-                  <Slider fx:id="hair_width" layoutX="139.0" layoutY="145.0" prefHeight="14.0" prefWidth="140.0" />
+                  <Text layoutX="9.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Longueur des cheveux :" />
+                  <Slider fx:id="hair_width" layoutX="139.0" layoutY="149.0" prefHeight="14.0" prefWidth="140.0" />
+                  <ListView layoutX="139.0" layoutY="87.0" prefHeight="24.0" prefWidth="140.0" />
+                  <ComboBox layoutX="139.0" layoutY="118.0" prefHeight="25.0" prefWidth="140.0" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="AvatarPane" layoutX="379.0" layoutY="55.0" prefHeight="324.0" prefWidth="200.0">
          <children>
-            <Circle fill="DODGERBLUE" layoutX="100.0" layoutY="162.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+            <Canvas height="338.0" width="200.0" />
          </children>
       </AnchorPane>
    </children>
