@@ -23,7 +23,7 @@ class Personnes {
     
     public Personnes() {
         this.liste = FXCollections.observableArrayList();
-        this.liste.add(new Personne("antoine.dupuy", "dra1337", "Antoine Dupuy", "17, avenue de Muret"));
+        this.liste.add(new Personne("antoine.dupuy", "123", "Antoine Dupuy", "17, avenue de Muret"));
     }
     
     public ObservableList<Personne> getListe() {

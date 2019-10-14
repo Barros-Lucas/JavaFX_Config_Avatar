@@ -6,6 +6,9 @@
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,23 +28,34 @@
                <children>
                   <Text layoutX="9.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" wrappingWidth="109.232421875" />
                   <Text layoutX="9.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" wrappingWidth="96.21484375" />
+                  <Text layoutX="9.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age :" wrappingWidth="87.970703125" />
+                  <Text layoutX="9.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe :" wrappingWidth="61.322265625" />
                   <Text layoutX="105.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations basiques" />
                   <TextField fx:id="Nom" layoutX="64.0" layoutY="22.0" prefHeight="25.0" prefWidth="240.0" />
                   <TextField fx:id="Prenom" layoutX="64.0" layoutY="52.0" prefHeight="25.0" prefWidth="240.0" />
+                  <MenuButton fx:id="age" layoutX="64.0" layoutY="81.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Age">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+                  <RadioButton fx:id="Sexe_Homme" layoutX="62.0" layoutY="115.0" mnemonicParsing="false" text="Homme" />
+                  <RadioButton fx:id="Sexe_Femme" layoutX="154.0" layoutY="115.0" mnemonicParsing="false" text="Femme" />
+                  <RadioButton fx:id="Sexe_Autre" layoutX="253.0" layoutY="115.0" mnemonicParsing="false" text="Autre" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ConfigurationVisuelPane" layoutX="14.0" layoutY="160.0" prefHeight="211.0" prefWidth="326.0">
                <children>
                   <Text layoutX="8.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur de peau :" />
                   <Text layoutX="8.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur des yeux :" />
-                  <Text layoutX="9.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forme du visage :" />
+                  <Text layoutX="9.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coupe de cheveux :" />
                   <Text layoutX="9.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur des cheveux :" />
                   <Text layoutX="118.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visuel de l'Avatar" />
                   <ColorPicker fx:id="eyes_color" layoutX="139.0" layoutY="59.0" />
                   <ColorPicker fx:id="skinColor" layoutX="139.0" layoutY="31.0" />
                   <Text layoutX="9.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Longueur des cheveux :" />
                   <Slider fx:id="hair_width" layoutX="139.0" layoutY="149.0" prefHeight="14.0" prefWidth="140.0" />
-                  <ListView fx:id="headStyle" layoutX="139.0" layoutY="87.0" prefHeight="24.0" prefWidth="140.0" />
+                  <ListView fx:id="hairStyle" layoutX="139.0" layoutY="87.0" prefHeight="24.0" prefWidth="140.0" />
                   <ComboBox fx:id="hairColor" layoutX="139.0" layoutY="118.0" prefHeight="25.0" prefWidth="140.0" />
                   <ButtonBar layoutX="63.0" layoutY="185.0" prefHeight="33.0" prefWidth="200.0">
                     <buttons>

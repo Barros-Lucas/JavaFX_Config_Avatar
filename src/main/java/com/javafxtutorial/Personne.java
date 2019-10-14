@@ -7,14 +7,11 @@ package com.javafxtutorial;
 
 import java.time.LocalDateTime;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.paint.Color;
 
 /**
  *
@@ -33,7 +30,9 @@ class Personne {
     private final StringProperty eyeColor = new SimpleStringProperty();
     private final DoubleProperty hairLength = new SimpleDoubleProperty();
     private final StringProperty skinColor = new SimpleStringProperty();
+    private final StringProperty headStyle = new SimpleStringProperty();
 
+    // Constructor
     public Personne(String id, String pwd, String fullname, String addr) {
         this.id.set(id);
         this.pwd.set(pwd);
@@ -41,6 +40,7 @@ class Personne {
         this.addr.set(addr);
     }
 
+    // Id
     public String getId() {
         return id.getValue();
     }
@@ -49,10 +49,11 @@ class Personne {
         return id;
     }
     
-    public void setLogin(String value) {
+    public void setId(String value) {
         id.set(value);
     }
     
+    // Password
     public String getPwd() {
         return pwd.getValue();
     }
@@ -65,6 +66,7 @@ class Personne {
         pwd.set(value);
     }
     
+    // Fullname
     public String getFullname() {
         return fullname.getValue();
     }
@@ -77,6 +79,7 @@ class Personne {
         fullname.set(value);
     }
     
+    // Addr
     public String getAddr() {
         return addr.getValue();
     }
@@ -89,6 +92,7 @@ class Personne {
         addr.set(value);
     }    
     
+    // Last connection
     public final LocalDateTime getLastConnection() {
         return lastConnection.getValue();
     }
@@ -101,10 +105,7 @@ class Personne {
         return lastConnection;
     }
 
-    boolean checkPassword(String username, String password) {
-        return this.pwd.getValue().equals(password) && this.id.getValue().equals(username);
-    }
-    
+    // Hair
     public final Number getHairLength() {
         return this.hairLength.getValue();
     }
@@ -113,6 +114,15 @@ class Personne {
         this.hairLength.set((double) new_val);
     }
     
+    public final String getHairColor() {
+        return this.hairColor.getValue();
+    }
+    
+    void setHairColor(String color) {
+        this.hairColor.set(color);
+    }
+    
+    // Skin color
     public final String getSkinColor() {
         return this.skinColor.getValue();
     }
@@ -120,6 +130,33 @@ class Personne {
     void setSkinColor(String color) {
         this.skinColor.set(color);
     }
+
+    // Eye color
+    public void setEyesColor(String color){
+        this.eyeColor.set(color);
+    }
+
+    public final String getEyesColor() {
+        return this.eyeColor.getValue();
+    }
     
+    // Head style
+    public void setHeadStyle(String style) {
+        this.headStyle.set(style);
+    }
     
+    public String getHeadStyle() {
+        return this.headStyle.getValue();
+    }
+
+    // Password checker
+    boolean checkPassword(String username, String password) {
+        return this.pwd.getValue().equals(password) && this.id.getValue().equals(username);
+    }
+
+    Object headShapeProperty() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
 }
