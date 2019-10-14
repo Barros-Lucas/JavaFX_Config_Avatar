@@ -59,7 +59,7 @@ public class UI_Avatar_configController implements Initializable {
     private ComboBox<String> hairColor;
     @FXML
     private ListView<String> headStyle;
-
+    
     // Graphic attributes
     GraphicsContext gc;
     Color hair = Color.BLACK;
@@ -68,7 +68,74 @@ public class UI_Avatar_configController implements Initializable {
     String head = "cercle";
     
     // Personne p concerned
+    AvatarContexte avatarContexte;
     Personne p;
+
+    
+    void setContexte(AvatarContexte avatarContexte) {
+        this.avatarContexte = avatarContexte;
+        this.p = avatarContexte.pConnectee;
+
+        // Binding and listeners
+        this.p.idProperty().bind(
+            Prenom.textProperty().concat(".").concat(Nom.textProperty())
+        );
+        this.p.fullnameProperty().bind(
+            Prenom.textProperty().concat(" ").concat(Nom.textProperty())
+        );
+        hairColor.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> ov, String old_val, String new_val) -> {
+            this.resetCanvas();
+            hair = Color.web(new_val);
+            this.p.setHairColor(new_val);
+            this.setHairs(Color.web(new_val), this.p.getHairLength());
+            this.setHead(skin, head);
+            this.setBody();
+            this.setEyes(eye);
+            this.setSmile();
+
+        });
+        headStyle.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> ov, String old_val, String new_val) -> {
+            this.resetCanvas();
+            this.setHairs(hair, this.p.getHairLength());
+            head = new_val;
+            this.p.setHeadStyle(head);
+            this.setHead(skin, new_val);
+            this.setBody();
+            this.setEyes(eye);
+            this.setSmile();
+
+        });
+        hair_width.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            this.resetCanvas();
+            this.p.setHairLength(new_val);
+            this.setHairs(hair, new_val.doubleValue());
+            this.setHead(skin, head);
+            this.setBody();
+            this.setEyes(eye);
+            this.setSmile();
+        });
+        skinColor.valueProperty().addListener((ObservableValue<? extends Color> ov, Color old_value, Color new_val) -> {
+            this.resetCanvas();
+            this.p.setSkinColor(new_val.toString());
+            skin = new_val;
+            this.setHairs(hair, this.p.getHairLength());
+            this.setHead(new_val, head);
+            this.setBody();
+            this.setEyes(eye);
+            this.setSmile();
+        });
+        eyes_color.valueProperty().addListener((ObservableValue<? extends Color> ov, Color old_value, Color new_val) -> {
+            this.resetCanvas();
+            eye = new_val;
+            this.setHairs(hair, this.p.getHairLength());
+            this.setHead(skin, head);
+            this.setBody();
+            p.setEyesColor(new_val.toString());
+            this.setEyes(eye);
+            this.setSmile();
+        });
+        
+    }
 
     /**
      * Initializes the controller class.
@@ -77,9 +144,7 @@ public class UI_Avatar_configController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        p = new Personne("lamba.lambda", "lambda", "Lambda Lambda", "ADDR");
-        
+
         // Set graphic context
         gc = avatarCanvas.getGraphicsContext2D();
         
@@ -98,65 +163,6 @@ public class UI_Avatar_configController implements Initializable {
         // Initiate head style
         this.resetHeadStyle();
         
-        
-        // Binding and listeners
-        p.idProperty().bind(
-            Prenom.textProperty().concat(".").concat(Nom.textProperty())
-        );
-        p.fullnameProperty().bind(
-            Prenom.textProperty().concat(" ").concat(Nom.textProperty())
-        );
-        hairColor.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> ov, String old_val, String new_val) -> {
-            this.resetCanvas();
-            hair = Color.web(new_val);
-            p.setHairColor(new_val);
-            this.setHairs(Color.web(new_val), p.getHairLength());
-            this.setHead(skin, head);
-            this.setBody();
-            this.setEyes(eye);
-            this.setSmile();
-
-        });
-        headStyle.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> ov, String old_val, String new_val) -> {
-            this.resetCanvas();
-            this.setHairs(hair, p.getHairLength());
-            head = new_val;
-            p.setHeadStyle(head);
-            this.setHead(skin, new_val);
-            this.setBody();
-            this.setEyes(eye);
-            this.setSmile();
-
-        });
-        hair_width.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            this.resetCanvas();
-            p.setHairLength(new_val);
-            this.setHairs(hair, new_val.doubleValue());
-            this.setHead(skin, head);
-            this.setBody();
-            this.setEyes(eye);
-            this.setSmile();
-        });
-        skinColor.valueProperty().addListener((ObservableValue<? extends Color> ov, Color old_value, Color new_val) -> {
-            this.resetCanvas();
-            p.setSkinColor(new_val.toString());
-            skin = new_val;
-            this.setHairs(hair, p.getHairLength());
-            this.setHead(new_val, head);
-            this.setBody();
-            this.setEyes(eye);
-            this.setSmile();
-        });
-        eyes_color.valueProperty().addListener((ObservableValue<? extends Color> ov, Color old_value, Color new_val) -> {
-            this.resetCanvas();
-            eye = new_val;
-            this.setHairs(hair, p.getHairLength());
-            this.setHead(skin, head);
-            this.setBody();
-            p.setEyesColor(new_val.toString());
-            this.setEyes(eye);
-            this.setSmile();
-        });
     }
 
     private void resetCanvas() {
@@ -255,8 +261,6 @@ public class UI_Avatar_configController implements Initializable {
             gc.strokePolygon(xpoints, ypoints, xpoints.length);
             gc.fillPolygon(xpoints, ypoints, xpoints.length);
         }
-        //gc.strokeRect(50, 95, 100, 100);
-        //gc.fillRect(50, 95, 100, 100);
     }
     
     @FXML
@@ -273,12 +277,12 @@ public class UI_Avatar_configController implements Initializable {
 
     @FXML
     private void onSave(MouseEvent event) {
-        System.out.println("FULLNAME : " + p.getFullname());
-        System.out.println("ID : " + p.getId());
-        System.out.println("Hair LENGTH : " + p.getHairLength());
-        System.out.println("Hair COLOR : " + p.getHairColor());
-        System.out.println("Skin COLOR : " + p.getSkinColor());
-        System.out.println("Head STYLE : " + p.getHeadStyle());
+        System.out.println("FULLNAME : " + this.p.getFullname());
+        System.out.println("ID : " + this.p.getId());
+        System.out.println("Hair LENGTH : " + this.p.getHairLength());
+        System.out.println("Hair COLOR : " + this.p.getHairColor());
+        System.out.println("Skin COLOR : " + this.p.getSkinColor());
+        System.out.println("Head STYLE : " + this.p.getHeadStyle());
     }
 
 }

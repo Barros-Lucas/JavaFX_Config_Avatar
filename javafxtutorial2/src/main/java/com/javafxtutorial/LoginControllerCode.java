@@ -53,6 +53,8 @@ public class LoginControllerCode {
 
                 // Chargement du second controller
                 UI_Avatar_configController controller = loader.getController();
+                AvatarContexte contexte = new AvatarContexte(personneConnectee);
+                controller.setContexte(contexte);
 
                 Scene scene = new Scene(rootLayout, 600, 600);
                 stage.setScene(scene);

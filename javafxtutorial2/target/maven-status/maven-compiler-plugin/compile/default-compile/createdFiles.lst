@@ -5,6 +5,7 @@ com\javafxtutorial\Personnes.class
 module-info.class
 com\javafxtutorial\ContexteIdentification.class
 com\javafxtutorial\MainWindowController.class
+com\javafxtutorial\AvatarContexte.class
 com\javafxtutorial\UI_Avatar_configController.class
 com\javafxtutorial\Personne.class
 com\javafxtutorial\LoginCode.class

@@ -48,14 +48,14 @@
                <children>
                   <Text layoutX="8.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur de peau :" />
                   <Text layoutX="8.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur des yeux :" />
-                  <Text layoutX="9.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coupe de cheveux :" />
+                  <Text layoutX="9.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forme du visage :" />
                   <Text layoutX="9.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur des cheveux :" />
                   <Text layoutX="118.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visuel de l'Avatar" />
                   <ColorPicker fx:id="eyes_color" layoutX="139.0" layoutY="59.0" />
                   <ColorPicker fx:id="skinColor" layoutX="139.0" layoutY="31.0" />
                   <Text layoutX="9.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Longueur des cheveux :" />
                   <Slider fx:id="hair_width" layoutX="139.0" layoutY="149.0" prefHeight="14.0" prefWidth="140.0" />
-                  <ListView fx:id="hairStyle" layoutX="139.0" layoutY="87.0" prefHeight="24.0" prefWidth="140.0" />
+                  <ListView fx:id="headStyle" layoutX="139.0" layoutY="87.0" prefHeight="24.0" prefWidth="140.0" />
                   <ComboBox fx:id="hairColor" layoutX="139.0" layoutY="118.0" prefHeight="25.0" prefWidth="140.0" />
                   <ButtonBar layoutX="63.0" layoutY="185.0" prefHeight="33.0" prefWidth="200.0">
                     <buttons>
